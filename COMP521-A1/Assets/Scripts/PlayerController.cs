@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float speed;
     [SerializeField] public GameObject cam;
     [SerializeField] public Rigidbody rb;
+    
 
     // Update is called once per frame
     void Update()
@@ -36,4 +37,5 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(rb.transform.position - cam.transform.right* Time.deltaTime * speed);
         }
     }
+
 }

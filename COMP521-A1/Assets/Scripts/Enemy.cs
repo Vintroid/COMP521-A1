@@ -5,8 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // We want access to the eventManager functions from this class.
-    [field: SerializeField, HideInInspector] 
-    public EventManager eventManager { get; set; }
+    [SerializeField] EventManager eventManager;
+
+    // Enemy body
+    [SerializeField] GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class Enemy : MonoBehaviour
     // Behaviour when the enemy is destroyed
     public void OnDestroyed()
     {
-        eventManager.EnemyDown(this);
-        GameObject.Destroy(gameObject);
+        eventManager.EnemyDown();
+        GameObject.Destroy(enemy);
     }
 }
