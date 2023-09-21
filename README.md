@@ -1,4 +1,5 @@
 # COMP521-A1
+By: Vincent St-Pierre ID: 260986454<br>
 
 Note: Game Win or Game Over are achieved by touching the goal pad or by falling under the map.<br>
 They will each print a message indicating this in the Debug.Log<br>
