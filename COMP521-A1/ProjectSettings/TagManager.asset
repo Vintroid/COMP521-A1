@@ -8,6 +8,7 @@ TagManager:
   - Pistol
   - EventManager
   - CombatLine
+  - Canyon
   layers:
   - Default
   - TransparentFX
