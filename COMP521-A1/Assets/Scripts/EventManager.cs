@@ -35,7 +35,7 @@ public class EventManager : MonoBehaviour
         // Updating fields with current game time
         timer += Time.DeltaTime;
         waveTimer += Time.DeltaTime;
-        difficulty = timer/15;
+        difficulty = Math.Clamp between 0 to 10 timer/15;
         waveRate = 1 + (7 - difficulty);
 
         // Looking if an enemy should be spawned
@@ -76,7 +76,12 @@ public class EventManager : MonoBehaviour
         string waveType;
         int rng = Random.NextInt(0,100);
 
-        // Defining wave odds
+        // Mixed waves
+        if(rng <= 2 * difficulty){
+            waveType = "all";
+        }
+
+        else
         waveType = "wrench";
 
         return waveType;
