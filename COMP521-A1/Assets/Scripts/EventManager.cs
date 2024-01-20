@@ -13,6 +13,7 @@ public class EventManager : MonoBehaviour
     public float timer = 0f;
     public int powerupRate = 2;
     public int weaponRate = 2;
+    public float enemyRate = 0.20f;
 
     // keep track of if the bullet is flying or not
     public bool firing = false;
@@ -41,36 +42,17 @@ public class EventManager : MonoBehaviour
             // Spawn weapon
         }
 
+        // Enemies can spawn powerups
         else{
+            int randomIntPwrUp = Random.NextInt(1,11);
 
+            // Powerup roll 
+            if(randomIntPwrUp <= powerupRate){
+                // Spawn powerup
+            }
+            
         }
     }
 
-    public void CombatStart()
-    {
-        // Teleports player to combat area starting point
-        player.transform.position = new Vector3(-10.0f, 0f, 35.0f);
-        pistol.gameObject.SetActive(true);
-        combatWall1.gameObject.SetActive(true);
-        enemy.gameObject.SetActive(true);
-        
-
-    }
-
-    // Combat Area can no longer be reached
-    public void CanyonEntered()
-    {
-        combatWall2.gameObject.SetActive(true);
-        combatLine2.gameObject.SetActive(true);
-    }
-
-    // Removing canyon path once arrived in goal area
-    public void CanyonExited()
-    {
-        GameObject[] path = GameObject.FindGameObjectsWithTag("Canyon");
-        foreach(GameObject obj in path)
-        {
-            Destroy(obj);
-        }
-    }
+    
 }
