@@ -11,14 +11,12 @@ public class EventManager : MonoBehaviour
 
     // Game Fields
     public float timer = 0f;
-    public float enemyTimer = 0f;
+    public float wrenchTimer = 0f;
     public int powerupRate = 2;
     public int weaponRate = 2;
-    public float enemySpawnTimer = 3.33f;
 
-    // keep track of if the bullet is flying or not
-    public bool firing = false;
-
+    // Enemy fields
+    public float wrenchSpawnTimer = 3.33f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +29,13 @@ public class EventManager : MonoBehaviour
     {
         // Updating timers with current game time
         timer += Time.DeltaTime;
-        enemyTimer += Time.DeltaTime;
+        wrenchTimer += Time.DeltaTime;
 
         // Changing enemy spawn timer depending on game timer
-        enemySpawnTimer = 0.33 + (3 - (timer/30);
+        wrenchSpawnTimer = 0.33 + (3 - (timer/30);
+
+        // Checking if enemies should be spawned
+        IsWrenchSpawned();
 
         // Looking if an enemy should be spawned
         if(enemyTimer >= enemySpawnTimer){
@@ -65,6 +66,16 @@ public class EventManager : MonoBehaviour
                 // Spawn powerup
             }
             
+        }
+    }
+
+    private void isWrenchSpawned(){
+        
+        if(WrenchTimer >= WrenchSpawnTimer){
+            // Getting a random movement type integer
+            int mvmtType = Random.NextInt(0,2);
+            GameObject.Instantiate(wrench,mvmtType);
+            wrenchTimer = 0f;
         }
     }
 
