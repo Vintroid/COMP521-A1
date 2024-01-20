@@ -20,6 +20,9 @@ public class EventManager : MonoBehaviour
     // Enemy fields
     public float wrenchSpawnTimer = 3.33f;
 
+    // Wave Types
+    [SerializeField] WrenchWave wrenchWave;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +38,13 @@ public class EventManager : MonoBehaviour
         difficulty = timer/15;
         waveRate = 1 + (7 - difficulty);
 
-        WaveSelector();
-
         // Looking if an enemy should be spawned
-        if(enemyTimer >= enemySpawnTimer){
-            // Getting a random movement type integer
-            int mvmtType = Random.NextInt(0,2);
-            enemyTimer = 0f;
-            
+        if(waveTimer >= waveRate){
+            waveTimer = 0f;
+            string waveType = WaveSelector();
+
+            // Case
+            WrenchWave();
         }
     }
 
@@ -78,6 +80,18 @@ public class EventManager : MonoBehaviour
         waveType = "wrench";
 
         return waveType;
+    }
+
+    private void WrenchWave(){
+        int wrenchNum = 2 + difficulty;
+        for(int i = 0; i<wrenchNum ; i++){
+            // Random Y position on game space
+            float xPos = fixedposition;
+            float yPos = Random.NextFloat(0,maxPos) + centerScreen;
+
+            GameObject.Instantiate(wrench, new Vector2(xPos,yPos));
+            
+        }
     }
 
     
