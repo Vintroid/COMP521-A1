@@ -12,10 +12,6 @@ public class Enemy : MonoBehaviour
 
     // Enemy health
     private int health = 2;
-    
-    // Movement type
-    int movementType = 0;
-    
 
     // Start is called before the first frame update
     void Start()
