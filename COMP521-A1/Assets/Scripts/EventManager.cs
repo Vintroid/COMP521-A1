@@ -11,7 +11,9 @@ public class EventManager : MonoBehaviour
 
     // Game Fields
     public float timer = 0f;
-    public float wrenchTimer = 0f;
+    public int difficulty = 0;
+    public float waveTimer = 0;
+    public float waveRate = 8f;
     public int powerupRate = 2;
     public int weaponRate = 2;
 
@@ -27,15 +29,13 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Updating timers with current game time
+        // Updating fields with current game time
         timer += Time.DeltaTime;
-        wrenchTimer += Time.DeltaTime;
+        waveTimer += Time.DeltaTime;
+        difficulty = timer/15;
+        waveRate = 1 + (7 - difficulty);
 
-        // Changing enemy spawn timer depending on game timer
-        wrenchSpawnTimer = 0.33 + (3 - (timer/30);
-
-        // Checking if enemies should be spawned
-        IsWrenchSpawned();
+        WaveSelector();
 
         // Looking if an enemy should be spawned
         if(enemyTimer >= enemySpawnTimer){
@@ -69,16 +69,15 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    private void isWrenchSpawned(){
-        
-        if(WrenchTimer >= WrenchSpawnTimer){
-            //Getting a random starting position
-            float startPosX = fixedXCoord;
-            float startPosY = RandomNextFloat(0,maxbound);
-            startPosY -= middle offset;
-            GameObject.Instantiate(wrench,new Vector2(startPosX,startPosY));
-            wrenchTimer = 0f;
-        }
+    
+    private String WaveSelector(){
+        string waveType;
+        int rng = Random.NextInt(0,100);
+
+        // Defining wave odds
+        waveType = "wrench";
+
+        return waveType;
     }
 
     
