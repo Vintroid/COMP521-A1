@@ -72,9 +72,7 @@ public class EventManager : MonoBehaviour
     private void isWrenchSpawned(){
         
         if(WrenchTimer >= WrenchSpawnTimer){
-            // Getting a random movement type integer
-            int mvmtType = Random.NextInt(0,2);
-            GameObject.Instantiate(wrench,mvmtType);
+            GameObject.Instantiate(wrench);
             wrenchTimer = 0f;
         }
     }
