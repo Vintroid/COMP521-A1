@@ -32,8 +32,18 @@ public class EventManager : MonoBehaviour
 
     public void EnemyDown()
     {
-        // Enemies can drop weapons and powerups
-        int randomInt = Random.
+        // Enemies can drop weapons
+        int randomIntWpn = Random.NextInt(1,11);
+
+        // Weapons roll first
+        if(randomIntWpn <= weaponRate)
+        {
+            // Spawn weapon
+        }
+
+        else{
+
+        }
     }
 
     public void CombatStart()
