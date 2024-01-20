@@ -72,7 +72,11 @@ public class EventManager : MonoBehaviour
     private void isWrenchSpawned(){
         
         if(WrenchTimer >= WrenchSpawnTimer){
-            GameObject.Instantiate(wrench);
+            //Getting a random starting position
+            float startPosX = fixedXCoord;
+            float startPosY = RandomNextFloat(0,maxbound);
+            startPosY -= middle offset;
+            GameObject.Instantiate(wrench,new Vector2(startPosX,startPosY));
             wrenchTimer = 0f;
         }
     }
